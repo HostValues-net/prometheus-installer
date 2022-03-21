@@ -93,13 +93,13 @@ Type=simple
 User=node_exporter
 Group=node_exporter
 ExecStart=/usr/bin/node_exporter \
-— collector.mountstats \
-— collector.logind \
-— collector.processes \
-— collector.ntp \
-— collector.systemd \
-— collector.tcpstat \
-— collector.wifi
+--collector.mountstats \
+--collector.logind \
+--collector.processes \
+--collector.ntp \
+--collector.systemd \
+--collector.tcpstat \
+--collector.wifi
 Restart=always
 RestartSec=10s
 [Install]
