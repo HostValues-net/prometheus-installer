@@ -8,3 +8,9 @@ Based on: https://www.fosstechnix.com/install-prometheus-and-grafana-on-ubuntu/#
 ```
 curl -o- https://raw.githubusercontent.com/stijnb1234/prometheus-installer/main/install.sh | bash
 ```
+
+## Installation with Node exporter:
+
+```
+curl -o- https://raw.githubusercontent.com/stijnb1234/prometheus-installer/main/install-with-node-export.sh | bash
+```
