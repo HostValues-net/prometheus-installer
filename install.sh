@@ -3,6 +3,7 @@
 VERSION=v2.34.0
 VERSION_PATH=prometheus-2.34.0.linux-amd64
 BUILD=/opt
+IP=$(hostname -I)
 
 # Setup the users and folders
 sudo useradd --no-create-home --shell /bin/false prometheus
@@ -35,4 +36,32 @@ sudo chown -R prometheus:prometheus /etc/prometheus/consoles
 sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
 sudo chown -R prometheus:prometheus /etc/prometheus/prometheus.yml
 
-echo -e "Installation done! Do not forget to make a systemd script! This is NOT support by this installation script yet."
+# Install systemd service
+echo "[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+ExecStart=/usr/local/bin/prometheus \
+    --config.file /etc/prometheus/prometheus.yml \
+    --storage.tsdb.path /var/lib/prometheus/ \
+    --web.console.templates=/etc/prometheus/consoles \
+    --web.console.libraries=/etc/prometheus/console_libraries
+
+[Install]
+WantedBy=multi-user.target" >> /etc/systemd/system/prometheus.service
+
+# Enable systemd service
+sudo systemctl daemon-reload
+sudo systemctl enable prometheus --now
+
+# Confirm
+echo -e "----------------------------"
+echo -e "Installation of Prometheus done!"
+echo -e "It should be accessible from $IP:9090"
+echo -e "Please check your firewall settings if it's not available!"
+echo -e "----------------------------"
