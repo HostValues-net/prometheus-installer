@@ -3,7 +3,6 @@
 VERSION=v2.34.0
 VERSION_PATH=prometheus-2.34.0.linux-amd64
 BUILD=/opt
-IP=$(hostname -I)
 
 # Setup the users and folders
 sudo useradd --no-create-home --shell /bin/false prometheus
@@ -63,6 +62,6 @@ sudo systemctl enable prometheus --now
 # Confirm
 echo -e "----------------------------"
 echo -e "Installation of Prometheus done!"
-echo -e "It should be accessible from $IP:9090"
+echo -e "It should be accessible from $HOSTNAME:9090"
 echo -e "Please check your firewall settings if it's not available!"
 echo -e "----------------------------"
