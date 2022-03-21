@@ -6,5 +6,5 @@ Based on: https://www.fosstechnix.com/install-prometheus-and-grafana-on-ubuntu/#
 ## Installation:
 
 ```
-curl -o- https://github.com/stijnb1234/prometheus-installer/raw/main/install.sh | bash
+curl -o- https://raw.githubusercontent.com/stijnb1234/prometheus-installer/main/install.sh | bash
 ```
