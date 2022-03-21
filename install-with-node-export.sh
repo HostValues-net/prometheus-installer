@@ -3,7 +3,7 @@
 VERSION=v2.34.0
 VERSION_PATH=prometheus-2.34.0.linux-amd64
 VERSION_NODE=v1.3.1
-VERSION_NODE_PATH=node_exporter-1.3.1.linux-amd64.tar
+VERSION_NODE_PATH=node_exporter-1.3.1.linux-amd64
 
 BUILD=/opt
 
