@@ -110,7 +110,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable node_exporter --now
 
 # Edit prometheus config
-sed -i -e 's/\["localhost:9090"\]/\["localhost:9090", "localhost:9100"\]/g' prometheus.yml
+sed -i -e 's/\["localhost:9090"\]/\["localhost:9090", "localhost:9100"\]/g' /etc/prometheus/prometheus.yml
 sudo systemctl restart prometheus
 
 # Confirm
