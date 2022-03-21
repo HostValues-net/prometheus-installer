@@ -100,7 +100,7 @@ sudo systemctl restart prometheus
 
 # Confirm
 echo -e "----------------------------"
-echo -e "Installation of Prometheus done!"
+echo -e "Installation of Prometheus with Node Exporter done!"
 echo -e "It should be accessible from $HOSTNAME:9090"
 echo -e "Please check your firewall settings if it's not available!"
 echo -e "----------------------------"
