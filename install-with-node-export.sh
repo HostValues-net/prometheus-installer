@@ -7,6 +7,16 @@ VERSION_NODE_PATH=node_exporter-1.3.1.linux-amd64
 
 BUILD=/opt
 
+# Removal of old installation
+systemctl disable prometheus --now
+systemctl disable node_exporter --now
+rm -rf /etc/systemd/system/prometheus.service
+rm -rf /etc/systemd/system/node_exporter.service
+rm -rf /usr/bin/prometheus
+rm -rf /usr/bin/promtool
+rm -rf /etc/prometheus
+rm -rf /var/lib/prometheus
+
 # Setup the users and folders
 sudo useradd --no-create-home --shell /bin/false prometheus
 sudo useradd --no-create-home --shell /bin/false node_exporter
@@ -63,9 +73,14 @@ sudo systemctl daemon-reload
 sudo systemctl enable prometheus --now
 
 # Download Node exporter
+rm -rf $BUILD/$VERSION_NODE_PATH
+cd $BUILD
+rm -rf $VERSION_NODE_PATH.tar.gz
 wget https://github.com/prometheus/node_exporter/releases/download/$VERSION_NODE/$VERSION_NODE_PATH.tar.gz
 sudo tar xvzf $VERSION_NODE_PATH.tar.gz
 cd $VERSION_NODE_PATH
+
+# Copy binary
 sudo cp node_exporter /usr/bin
 
 # Create Node exporter systemd service
