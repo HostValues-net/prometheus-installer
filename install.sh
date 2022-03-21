@@ -18,6 +18,7 @@ sudo chown prometheus:prometheus /var/lib/prometheus
 # Download Prometheus
 rm -rf $BUILD/$VERSION_PATH
 cd $BUILD
+rm -rf $VERSION_PATH.tar.gz
 wget https://github.com/prometheus/prometheus/releases/download/$VERSION/$VERSION_PATH.tar.gz
 tar -xvf $VERSION_PATH.tar.gz
 cd $VERSION_PATH
